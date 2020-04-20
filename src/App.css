@@ -27,16 +27,18 @@ body {
 	line-height: 1.6;
 	color: var(--very-dark-black);
 	display: grid;
-	grid-template-areas: "main main aside";
+	/* grid-template-areas: "main main aside"; */
+	grid-template-columns: 2fr 1fr;
 }
 
-.main-section {
+
+/* .main-section {
 	grid-area: main;
 }
 
 .main-aside {
 	grid-area: aside;
-}
+} */
 
 a {
 	text-decoration: none;
@@ -294,21 +296,23 @@ ul li {
 
 @media (max-width: 500px) {
 	body {
+		font-family: var(--font-family);
+		line-height: 1.6;
+		color: var(--very-dark-black);
 		display: grid;
-		grid-template-areas:
-			"main"
-			"aside";
+		/* grid-template-areas: "main main aside"; */
+		grid-template-columns: 1fr;
 		grid-gap: 1rem;
 	}
 
-	.main-section {
+
+	/* .main-section {
 		grid-area: main;
 	}
-
+	
 	.main-aside {
 		grid-area: aside;
-	}
-
+	} */
 	.main-section {
 		background-color: var(--White-BG);
 		padding: 1rem;
