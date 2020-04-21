@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CollectionOverview } from "./CollectionOverview";
+import { CountryDetails } from "./CountryDetails";
 
 export const Header = () => {
   const [countryData, setCountryData] = useState([]);
@@ -8,7 +8,9 @@ export const Header = () => {
   useEffect(() => {
     fetch(`https://covid19.mathdro.id/api/countries`)
       .then((response) => response.json())
-      .then((data) => setCountryData(data.countries));
+      .then((data) => {
+        setCountryData(data.countries);
+      });
   }, []);
 
   return (
@@ -37,7 +39,7 @@ export const Header = () => {
         </div>
       </nav>
 
-      <CollectionOverview selectValue={selectValue} />
+      <CountryDetails selectValue={selectValue} />
     </React.Fragment>
   );
 };

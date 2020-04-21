@@ -94,20 +94,20 @@ ul li {
 .fa-user-friends,
 .fa-user-shield,
 .fa-user-alt-slash {
-	font-size: 36px;
+	font-size: 35px;
 	color: var(--desaturated-blue);
 	margin-top: -20px;
 	margin-bottom: 30px;
 }
 
 .heading-primary {
-	font-size: 30px;
+	font-size: 38px;
 	font-weight: bold;
 	letter-spacing: 1.2px;
 }
 
 .count {
-	font-size: 20px;
+	font-size: 22px;
 	color: var(--Dark-Grayish-Blue-text);
 	letter-spacing: 1.4px;
 }
