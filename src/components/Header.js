@@ -3,15 +3,13 @@ import { CollectionOverview } from "./CollectionOverview";
 
 export const Header = () => {
   const [countryData, setCountryData] = useState([]);
-  const [selectValue, setSelectValue] = useState("");
+  const [selectValue, setSelectValue] = useState("Afghanistan");
 
   useEffect(() => {
     fetch(`https://covid19.mathdro.id/api/countries`)
       .then((response) => response.json())
       .then((data) => setCountryData(data.countries));
   }, []);
-
-  console.log(selectValue);
 
   return (
     <React.Fragment>
