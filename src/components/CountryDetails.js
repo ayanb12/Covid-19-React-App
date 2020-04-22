@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CountUp from "react-countup";
+import { AffectedStatesOverview } from "./AffectedStatesOverview";
 
 export const CountryDetails = ({ selectValue }) => {
   const [countryData, setCountryData] = useState({
@@ -21,45 +22,49 @@ export const CountryDetails = ({ selectValue }) => {
   }, [selectValue]);
 
   return (
-    <section className="country-details">
-      <div className="container">
-        <h1 className="heading-secondary">Country Details</h1>
-        <div className="parent-card">
-          <div className="card">
-            <i className="fas fa-user-friends"></i>
-            <CountUp start={0} end={countryData.confirmed}>
-              {({ countUpRef }) => (
-                <h2 className="heading-primary" ref={countUpRef}>
-                  {""}
-                </h2>
-              )}
-            </CountUp>
-            <span className="count">Confirmed</span>
-          </div>
-          <div className="card">
-            <i className="fas fa-user-shield"></i>
-            <CountUp start={0} end={countryData.recovered}>
-              {({ countUpRef }) => (
-                <h2 className="heading-primary" ref={countUpRef}>
-                  {""}
-                </h2>
-              )}
-            </CountUp>
-            <span className="count">Recovered</span>
-          </div>
-          <div className="card">
-            <i className="fas fa-user-alt-slash"></i>
-            <CountUp start={0} end={countryData.deaths}>
-              {({ countUpRef }) => (
-                <h2 className="heading-primary" ref={countUpRef}>
-                  {""}
-                </h2>
-              )}
-            </CountUp>
-            <span className="count">Deaths</span>
+    <React.Fragment>
+      <section className="country-details">
+        <div className="container">
+          <h1 className="heading-secondary">Country Details</h1>
+          <div className="parent-card">
+            <div className="card">
+              <i className="fas fa-user-friends"></i>
+              <CountUp start={0} end={countryData.confirmed}>
+                {({ countUpRef }) => (
+                  <h2 className="heading-primary" ref={countUpRef}>
+                    {""}
+                  </h2>
+                )}
+              </CountUp>
+              <span className="count">Confirmed</span>
+            </div>
+            <div className="card">
+              <i className="fas fa-user-shield"></i>
+              <CountUp start={0} end={countryData.recovered}>
+                {({ countUpRef }) => (
+                  <h2 className="heading-primary" ref={countUpRef}>
+                    {""}
+                  </h2>
+                )}
+              </CountUp>
+              <span className="count">Recovered</span>
+            </div>
+            <div className="card">
+              <i className="fas fa-user-alt-slash"></i>
+              <CountUp start={0} end={countryData.deaths}>
+                {({ countUpRef }) => (
+                  <h2 className="heading-primary" ref={countUpRef}>
+                    {""}
+                  </h2>
+                )}
+              </CountUp>
+              <span className="count">Deaths</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <AffectedStatesOverview selectValue={selectValue} />
+    </React.Fragment>
   );
 };
