@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Inter&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
 
 :root {
 	--White-BG: hsl(0, 0%, 100%);
@@ -119,11 +120,11 @@ ul li {
 .btn-primary {
 	display: inline-block;
 	width: 60px;
-	font-size: 14.6px;
+	font-size: 15px;
 	padding: 0.1rem 0;
 	text-align: center;
 	color: white;
-	background-color: rgb(233, 112, 112);
+	background-color: #b44a4a;
 	border-radius: 20px;
 	cursor: default;
 }
@@ -148,6 +149,7 @@ ul li {
 	font-size: 21px;
 	margin-bottom: 2rem;
 	letter-spacing: 1.4px;
+	color: #495057;
 }
 
 .color {
@@ -247,14 +249,28 @@ ul li {
 	width: 100%;
 }
 
-.affected-states .parent-card .card {
+.affected-states .parent-card .card,
+.affected-states .parent-card .error-card {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0.5rem;
+	padding: 0.6rem;
 	border-radius: 15px;
 	background-color: rgb(245, 241, 238);
 }
+
+.affected-states .parent-card .error-card {
+	margin-top: 40px;
+	background-color: white;
+	text-align: center;
+	display: block;
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 600;
+	font-size: 26px;
+	color: #495057;
+}
+
+
 
 .fa-circle {
 	color: var(--desaturated-blue);

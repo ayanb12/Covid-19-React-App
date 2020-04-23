@@ -30,8 +30,8 @@ export const AffectedStatesOverview = ({ selectValue }) => {
               .map((el2) => {
                 return {
                   lastUpdate: moment(el2.lastUpdate).format("MMMM Do YYYY"),
-                  confirmed: el2.confirmed,
-                  deaths: el2.deaths,
+                  confirmed: +el2.confirmed,
+                  deaths: +el2.deaths,
                 };
               })
               .slice(0, 12);
@@ -40,7 +40,7 @@ export const AffectedStatesOverview = ({ selectValue }) => {
           } else {
             setDataObj([
               {
-                noData: "Sorry no data for this date!",
+                noData: "Sorry, Found Nothing Today, Select Another Date.",
               },
             ]);
           }
@@ -72,7 +72,7 @@ export const AffectedStatesOverview = ({ selectValue }) => {
         </div>
         <div className="parent-card">
           {dataObj.map((obj, index) => (
-            <AffectedStates key={index} obj={obj} />
+            <AffectedStates key={index} obj={obj} dayNumber={index + 1} />
           ))}
         </div>
       </div>

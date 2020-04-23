@@ -29,7 +29,7 @@ export const CountryDetails = ({ selectValue }) => {
           <div className="parent-card">
             <div className="card">
               <i className="fas fa-user-friends"></i>
-              <CountUp start={0} end={countryData.confirmed}>
+              <CountUp delay={0} start={0} end={countryData.confirmed}>
                 {({ countUpRef }) => (
                   <h2 className="heading-primary" ref={countUpRef}>
                     {""}
@@ -40,7 +40,7 @@ export const CountryDetails = ({ selectValue }) => {
             </div>
             <div className="card">
               <i className="fas fa-user-shield"></i>
-              <CountUp start={0} end={countryData.recovered}>
+              <CountUp delay={0} start={0} end={countryData.recovered}>
                 {({ countUpRef }) => (
                   <h2 className="heading-primary" ref={countUpRef}>
                     {""}
