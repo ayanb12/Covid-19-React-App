@@ -34,8 +34,8 @@ body {
 body .body {
 	display: grid;
 	grid-template-columns: 2fr 1fr;
+	height: 100%;
 }
-
 
 /* .main-section {
 	grid-area: main;
@@ -118,8 +118,10 @@ ul li {
 
 .btn-primary {
 	display: inline-block;
-	padding: 0.1rem 1.1rem;
-	font-size: 12px;
+	width: 60px;
+	font-size: 14.6px;
+	padding: 0.1rem 0;
+	text-align: center;
 	color: white;
 	background-color: rgb(233, 112, 112);
 	border-radius: 20px;
@@ -146,6 +148,15 @@ ul li {
 	font-size: 21px;
 	margin-bottom: 2rem;
 	letter-spacing: 1.4px;
+}
+
+.color {
+	font-size: 25px;
+	color: rgb(219, 0, 0);
+}
+
+.color2 {
+	font-size: 18px;
 }
 
 /* sections */
@@ -210,23 +221,31 @@ ul li {
 
 .affected-states .affected-headings .view-all {
 	margin-bottom: 1.5rem;
-	font-size: 14px;
+	font-size: 19px;
 	margin-left: 25px;
-	font-weight: bold;
-	color: var(--color-dark-blue);
+	padding: 0.65rem;
+	border: 2px solid rgb(189, 188, 188);
+	width: 210px;
+	border-radius: 6px;
+}
+
+.affected-states .affected-headings .view-all:focus {
+	border: 2px solid var(--desaturated-blue);
+	outline: 0;
 }
 
 .affected-states .affected-headings .view-all:hover {
-	color: rgb(36, 145, 189);
+	cursor: text;
+	background-color: rgb(236, 231, 231);
 }
+
 
 .affected-states .parent-card {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-gap: 1.1rem;
+	grid-gap: 1rem;
 	width: 100%;
 }
-
 
 .affected-states .parent-card .card {
 	display: flex;
@@ -239,7 +258,7 @@ ul li {
 
 .fa-circle {
 	color: var(--desaturated-blue);
-	font-size: 10px;
+	font-size: 9px;
 	margin-right: 10px;
 }
 
@@ -312,7 +331,6 @@ ul li {
 		grid-template-columns: 1fr;
 		grid-gap: 1rem;
 	}
-
 
 	/* .main-section {
 		grid-area: main;

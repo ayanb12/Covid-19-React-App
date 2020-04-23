@@ -1,34 +1,79 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { AffectedStates } from "./AffectedStates";
+import moment from "moment";
 
 export const AffectedStatesOverview = ({ selectValue }) => {
-  const [states, setStates] = useState([]);
+  const [startDate, setStartDate] = useState(
+    moment(new Date()).format("MM-DD-YYYY")
+  );
 
+  //   Storing data of fetched Cases as Array
+  const [dataObj, setDataObj] = useState([
+    {
+      lastUpdate: moment().format("MMMM Do YYYY"),
+      confirmed: 0,
+      deaths: 0,
+    },
+  ]);
+
+  //   Fetching and Modifying the Country details for selected date
   useEffect(() => {
-    fetch(`https://covid19.mathdro.id/api/countries/${selectValue}/confirmed`)
-      .then((res) => res.json())
-      .then((data) => {
-        const statesArr = data.slice(0, 10);
-        setStates(statesArr);
-      });
-  }, [selectValue]);
+    try {
+      fetch(`https://covid19.mathdro.id/api/daily/${startDate}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.length > 0) {
+            const filteredCountry = data
+              .filter((el) => el.countryRegion === selectValue)
+              .map((el2) => {
+                return {
+                  lastUpdate: moment(el2.lastUpdate).format("MMMM Do YYYY"),
+                  confirmed: el2.confirmed,
+                  deaths: el2.deaths,
+                };
+              })
+              .slice(0, 12);
 
-  console.log(states);
+            setDataObj(filteredCountry);
+          } else {
+            setDataObj([
+              {
+                noData: "Sorry no data for this date!",
+              },
+            ]);
+          }
+        });
+    } catch (err) {
+      console.log("Nothing's there", err);
+    }
+  }, [selectValue, startDate]);
+
+  //   When User will change the Date
+  const handleChange = (date) => {
+    let formattedDate = moment(new Date(date)).format("MM-DD-YYYY");
+    setStartDate(formattedDate);
+  };
 
   return (
     <section className="affected-states">
       <div className="container scrollbar">
         <div className="affected-headings">
           <h1 className="heading-secondary">
-            Affected States of - {selectValue}
+            <span className="color">Cases of {selectValue}</span> -{" "}
+            <span className="color2">Select A Date</span>
           </h1>
-          <Link to="#" className="view-all">
-            See all 20 states <i className="fas fa-long-arrow-alt-right"></i>
-          </Link>
+          <DatePicker
+            className="view-all"
+            selected={new Date(startDate)}
+            onChange={handleChange}
+          />
         </div>
         <div className="parent-card">
-          <AffectedStates />
+          {dataObj.map((obj, index) => (
+            <AffectedStates key={index} obj={obj} />
+          ))}
         </div>
       </div>
     </section>
