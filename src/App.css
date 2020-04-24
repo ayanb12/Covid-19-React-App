@@ -27,9 +27,8 @@ body {
 	font-family: var(--font-family);
 	line-height: 1.6;
 	color: var(--very-dark-black);
-	/* display: grid;
-	grid-template-columns: 2fr 1fr; */
 	height: 100%;
+	width: 100%;
 }
 
 body .body {
@@ -38,13 +37,7 @@ body .body {
 	height: 100%;
 }
 
-/* .main-section {
-	grid-area: main;
-}
 
-.main-aside {
-	grid-area: aside;
-} */
 
 a {
 	text-decoration: none;
@@ -165,12 +158,12 @@ ul li {
 .main-section {
 	background-color: var(--White-BG);
 	padding: 1rem;
-	min-height: 100%;
+	height: 100%;
 }
 
 .main-aside {
 	background-color: var(--bg-white-pattern);
-	min-height: 100%;
+	height: 100%;
 }
 
 /* Nav section */
@@ -216,6 +209,10 @@ ul li {
 }
 
 /* Affected states */
+.affected-states {
+	position: relative;
+}
+
 .affected-states .affected-headings {
 	display: flex;
 	align-items: center;
@@ -242,63 +239,87 @@ ul li {
 }
 
 
-.affected-states .parent-card {
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-gap: 1rem;
+
+/* Table */
+.affected-states .table-wrapper {
+	overflow-y: auto;
+	height: 350px;
+	border-radius: 5px;
+}
+
+.affected-states .table-affected-states {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	border-collapse: collapse;
 	width: 100%;
 }
 
-.affected-states .parent-card .card,
-.affected-states .parent-card .error-card {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0.6rem;
-	border-radius: 15px;
-	background-color: rgb(245, 241, 238);
+.affected-states .table-affected-states td,
+.affected-states .table-affected-states th {
+	font-size: 16.3px;
+	padding: 14px;
 }
 
-.affected-states .parent-card .error-card {
-	margin-top: 40px;
-	background-color: white;
-	text-align: center;
-	display: block;
-	font-family: 'Work Sans', sans-serif;
+.affected-states .table-affected-states td {
+	font-size: 18.2px;
+	font-family: var(--font-family);
+	letter-spacing: 1.1px;
+	color: var(--desaturated-blue);
 	font-weight: 600;
-	font-size: 26px;
+}
+
+
+.affected-states .table-affected-states th {
+	font-size: 17px;
+}
+
+
+.fa-calendar-alt,
+.fa-globe-africa,
+.fa-caret-down {
+	color: #9ea0a1;
+	margin-left: 6px;
+}
+
+.affected-states .table-affected-states tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.affected-states .table-affected-states th:hover {
+	cursor: default;
+}
+
+.affected-states .table-affected-states th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #343A40;
+	color: #ffffff;
+}
+
+
+.affected-states .error-card {
+	position: absolute;
+	top: 50%;
+	left: 18%;
+	padding: 0.8rem;
+	text-align: center;
+	font-family: 'Work Sans', sans-serif;
+	letter-spacing: 1px;
+	font-weight: bold;
+	border-radius: 15px;
+	background-color: white;
 	color: #495057;
 }
 
 
-
-.fa-circle {
-	color: var(--desaturated-blue);
-	font-size: 9px;
-	margin-right: 10px;
+.affected-states .error-card .error-heading {
+	font-size: 22px;
 }
 
-.affected-states .parent-card .card .state-name {
-	font-size: 13px;
-	font-weight: bold;
-	letter-spacing: 1.2px;
-	color: var(--very-dark-black);
-}
-
-.affected-states .parent-card .card .state-info {
-	color: var(--Dark-Grayish-Blue-text);
-	margin-right: 10px;
-	letter-spacing: 1.1px;
-	font-size: 13px;
-}
-
-.fa-long-arrow-alt-right {
-	color: var(--color-dark-blue);
-}
 
 /* Aside section */
 .main-aside {
-	padding: 2rem;
+	padding: 1.5rem;
 }
 
 .main-aside .parent-card {
@@ -340,30 +361,37 @@ ul li {
 @media (max-width: 500px) {
 	body {
 		font-family: var(--font-family);
-		line-height: 1.6;
+		line-height: 1.2;
 		color: var(--very-dark-black);
-		display: grid;
-		/* grid-template-areas: "main main aside"; */
-		grid-template-columns: 1fr;
-		grid-gap: 1rem;
+		height: 100%;
+		width: 100%;
 	}
 
-	/* .main-section {
-		grid-area: main;
+	body .body {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 4rem;
+		height: 100%;
 	}
-	
-	.main-aside {
-		grid-area: aside;
-	} */
+
+
+	.heading-secondary {
+		font-size: 21px;
+		margin-bottom: 1rem;
+		letter-spacing: 1.4px;
+		color: #495057;
+	}
+
 	.main-section {
 		background-color: var(--White-BG);
 		padding: 1rem;
-		min-height: 100%;
+		height: 100%;
 	}
 
 	.main-aside {
 		background-color: var(--bg-white-pattern);
-		min-height: 100%;
+		width: 100%;
+		height: 100%;
 	}
 
 	.wrapper {
@@ -385,39 +413,114 @@ ul li {
 		grid-gap: 2rem;
 	}
 
-	.main-section {
-		background-color: var(--White-BG);
-		min-height: 100%;
+
+
+
+	/* Tables */
+	.affected-states .table-wrapper {
+		display: block;
+		overflow-y: auto;
+		overflow-x: auto;
+		width: 100%;
+		height: 100%;
+		border-radius: 5px;
 	}
 
-	.affected-states {
+	.affected-states .table-affected-states {
+		display: block;
+		font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+		border-collapse: collapse;
+		overflow-x: auto;
+		width: 100%;
 		height: 100%;
 	}
 
-	.affected-states .parent-card .card {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: center;
-		padding: 1.8rem;
-		background-color: rgb(245, 241, 238);
+
+	.affected-states .table-affected-states td,
+	.affected-states .table-affected-states th {
+		font-size: 16.3px;
+		padding: 14px;
 	}
 
-	.affected-states .parent-card .card .state-name {
+	.affected-states .table-affected-states th {
 		font-size: 14px;
-		font-weight: bold;
-		letter-spacing: 1.2px;
-		color: var(--very-dark-black);
-		margin-bottom: 60px;
 	}
 
-	.affected-states .parent-card .card .state-info {
-		color: var(--Dark-Grayish-Blue-text);
-		margin-right: 5px;
-		letter-spacing: 1.1px;
-	}
-
-	.affected-states .parent-card .fa-long-arrow-alt-right {
+	.affected-states .table-affected-states th:nth-child(2) {
 		display: none;
+	}
+
+	.affected-states .table-affected-states td:nth-child(2) {
+		display: none;
+	}
+
+	.fa-calendar-alt,
+	.fa-globe-africa,
+	.fa-caret-down {
+		color: #9ea0a1;
+		text-align: center;
+	}
+
+
+	.affected-states .table-affected-states tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	.affected-states .table-affected-states th:hover {
+		cursor: default;
+	}
+
+	.affected-states .table-affected-states th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #343A40;
+		color: #ffffff;
+	}
+
+
+	.affected-states .affected-headings {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	/* Date picker */
+	.affected-states .affected-headings .view-all {
+		margin-bottom: 1rem;
+		font-size: 15px;
+		margin-left: 0;
+		padding: 0.5rem;
+		border: 2px solid rgb(189, 188, 188);
+		width: 110px;
+		border-radius: 6px;
+		text-align: center;
+	}
+
+	/* Error card */
+	.affected-states .error-card {
+		position: absolute;
+		top: 220px;
+		left: 0;
+		padding: 0.8rem;
+		text-align: center;
+		font-family: 'Work Sans', sans-serif;
+		font-size: 14px;
+		letter-spacing: 1px;
+		font-weight: bold;
+		border-radius: 15px;
+		background-color: white;
+		color: #495057;
+	}
+
+
+	.color {
+		font-size: 15px;
+		color: rgb(219, 0, 0);
+	}
+
+	.color2 {
+		font-size: 14px;
 	}
 }

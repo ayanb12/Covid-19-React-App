@@ -20,34 +20,39 @@ export const AffectedStatesOverview = ({ selectValue }) => {
 
   //   Fetching and Modifying the Country details for selected date
   useEffect(() => {
-    try {
-      fetch(`https://covid19.mathdro.id/api/daily/${startDate}`)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.length > 0) {
-            const filteredCountry = data
-              .filter((el) => el.countryRegion === selectValue)
-              .map((el2) => {
+    fetch(`https://covid19.mathdro.id/api/daily/${startDate}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.length > 0) {
+          const filteredData = data
+            .filter((el) => el.countryRegion === selectValue)
+            .map((el) => {
+              if (el.provinceState.length > 0) {
                 return {
-                  lastUpdate: moment(el2.lastUpdate).format("MMMM Do YYYY"),
-                  confirmed: +el2.confirmed,
-                  deaths: +el2.deaths,
+                  lastUpdate: moment(el.lastUpdate).format("MMM Do YY"),
+                  name: el.provinceState,
+                  confirmed: el.confirmed,
+                  deaths: el.deaths,
                 };
-              })
-              .slice(0, 12);
-
-            setDataObj(filteredCountry);
-          } else {
-            setDataObj([
-              {
-                noData: "Sorry, Found Nothing Today, Select Another Date.",
-              },
-            ]);
-          }
-        });
-    } catch (err) {
-      console.log("Nothing's there", err);
-    }
+              } else {
+                return {
+                  lastUpdate: moment(el.lastUpdate).format("MMM Do YY"),
+                  name: el.countryRegion,
+                  confirmed: el.confirmed,
+                  deaths: el.deaths,
+                };
+              }
+            })
+            .slice(0, 12);
+          setDataObj(filteredData);
+        } else {
+          setDataObj([
+            {
+              noData: "Sorry, Found Nothing Today, Select Another Date.",
+            },
+          ]);
+        }
+      });
   }, [selectValue, startDate]);
 
   //   When User will change the Date
@@ -61,7 +66,7 @@ export const AffectedStatesOverview = ({ selectValue }) => {
       <div className="container scrollbar">
         <div className="affected-headings">
           <h1 className="heading-secondary">
-            <span className="color">Cases of {selectValue}</span> -{" "}
+            <span className="color">Historical Data of {selectValue}</span> -{" "}
             <span className="color2">Select A Date</span>
           </h1>
           <DatePicker
@@ -70,10 +75,30 @@ export const AffectedStatesOverview = ({ selectValue }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="parent-card">
-          {dataObj.map((obj, index) => (
-            <AffectedStates key={index} obj={obj} dayNumber={index + 1} />
-          ))}
+        <div className="table-wrapper">
+          <table className="table-affected-states">
+            <thead>
+              <tr>
+                <th>
+                  Country / State <i className="fas fa-globe-africa"></i>
+                </th>
+                <th>
+                  Day <i className="far fa-calendar-alt"></i>
+                </th>
+                <th>
+                  Confirmed <i className="fas fa-caret-down"></i>
+                </th>
+                <th>
+                  Deaths <i className="fas fa-caret-down"></i>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {dataObj.map((obj, index) => (
+                <AffectedStates key={index} obj={obj} />
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
