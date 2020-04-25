@@ -1,4 +1,5 @@
 import React from "react";
+import CountUp from "react-countup";
 
 export const AffectedStates = ({ obj }) => {
   console.log(obj);
@@ -12,8 +13,12 @@ export const AffectedStates = ({ obj }) => {
         <tr>
           <td>{obj.name}</td>
           <td>{obj.lastUpdate}</td>
-          <td>{obj.confirmed}</td>
-          <td>{obj.deaths}</td>
+          <CountUp delay={0} start={0} end={obj.confirmed}>
+            {({ countUpRef }) => <td ref={countUpRef}>{""}</td>}
+          </CountUp>
+          <CountUp delay={0} start={0} end={obj.deaths}>
+            {({ countUpRef }) => <td ref={countUpRef}>{""}</td>}
+          </CountUp>
         </tr>
       )}
     </>
