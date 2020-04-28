@@ -6,7 +6,7 @@
 
 # Usage
 
-1. User Can select Effected Countries from the dropdown, based on that the dashboard shows the current information
+1. User Can select Affected Countries from the dropdown, based on that the dashboard shows the current information
 
 2. It also shows the states of that country with confirmed cases and deaths.
 
@@ -19,6 +19,8 @@
 # Design
 
 ![Design preview for the Covid-19 Tracker Application](./design/Image1.png)
+
+![Design preview for the Covid-19 Tracker Application](./design/Image2.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
