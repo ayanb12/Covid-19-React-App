@@ -43,7 +43,7 @@ export const AffectedStatesOverview = ({ selectValue }) => {
                 };
               }
             })
-            .slice(0, 12);
+            .slice(0, 18);
           setDataObj(filteredData);
         } else {
           setDataObj([

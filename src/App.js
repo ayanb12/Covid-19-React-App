@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import { Header } from "./components/Header";
+import { TotalCases } from "./components/TotalCases";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
           <Header />
         </main>
         <aside className="main-aside">
-          <h1>hello</h1>
+          <TotalCases />
         </aside>
       </div>
     </BrowserRouter>

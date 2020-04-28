@@ -2,7 +2,6 @@ import React from "react";
 import CountUp from "react-countup";
 
 export const AffectedStates = ({ obj }) => {
-  console.log(obj);
   return (
     <>
       {obj.hasOwnProperty("noData") ? (
